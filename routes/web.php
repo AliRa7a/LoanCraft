@@ -32,6 +32,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/admin/profile',[AdminController::class, 'profile'])->name('admin.profile');
+    Route::post('/admin/update/profile',[AdminController::class, 'updateProfile'])->name('admin.profile.update');
+
 });
 
 Route::middleware(['auth','role:user'])->group(function () {
