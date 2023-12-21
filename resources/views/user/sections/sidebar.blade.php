@@ -1,5 +1,5 @@
 <div class="bg-gray-800 text-white w-64 px-6 py-8">
-                    <h1 class="text-2xl font-semibold">Admin Dashboard</h1>
+                    <h1 class="text-2xl font-semibold">User Dashboard</h1>
                     <ul class="mt-8">
                         <li class="my-3">
                             <a href="#" class="flex items-center text-gray-300 hover:text-white">
