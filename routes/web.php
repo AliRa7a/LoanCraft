@@ -40,6 +40,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('/admin/store/password',[AdminController::class, 'storePassword'])->name('admin.password.store');
 
     Route::get('/admin/all/users',[UsersController::class, 'allUsers'])->name('admin.all.users');
+
+    Route::delete('/admin/delete/{user}',[UsersController::class, 'deleteUser'])->name('delete.users');
+
 });
 
 Route::middleware(['auth','role:user'])->group(function () {
