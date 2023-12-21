@@ -37,13 +37,14 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('/admin/update/profile',[AdminController::class, 'updateProfile'])->name('admin.profile.update');
     Route::get('/admin/update/password',[AdminController::class, 'updatePassword'])->name('admin.password.update');
     Route::post('/admin/store/password',[AdminController::class, 'storePassword'])->name('admin.password.store');
-
-
-
 });
 
 Route::middleware(['auth','role:user'])->group(function () {
     Route::get('/user/dashboard',[UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/profile',[UserController::class, 'profile'])->name('user.profile');
+    Route::post('/user/update/profile',[UserController::class, 'updateProfile'])->name('user.profile.update');
+    Route::get('/user/update/password',[UserController::class, 'updatePassword'])->name('user.password.update');
+    Route::post('/user/store/password',[UserController::class, 'storePassword'])->name('user.password.store');
 });
 
 require __DIR__.'/auth.php';
