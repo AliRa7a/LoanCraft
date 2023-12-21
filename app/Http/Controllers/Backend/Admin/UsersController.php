@@ -10,7 +10,15 @@ class UsersController extends Controller
 {
     public function allUsers(){
 
-        $users= User::latest()->get();
+        $users= User::orderBy('id')->get();
         return view('admin.users.all_users',compact('users'));
+    }
+
+    public function deleteUser(User $user)
+    {
+        $user->delete();
+
+        toastr()->success('User deleted successfully', 'Congrats');
+        return redirect()->back();
     }
 }
