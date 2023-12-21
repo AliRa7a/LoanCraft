@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
@@ -44,6 +44,26 @@
                 profileDropdown.classList.add('hidden');
             }
         });
+    </script>
+    <script>
+        function previewImage() {
+        const fileInput = document.getElementById('profileImage');
+        const imagePreview = document.getElementById('selectedImage');
+        const profilePreview = document.getElementById('profilePreview');
+
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+            imagePreview.src = e.target.result;
+            profilePreview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+        }
     </script>
   
 </body>
