@@ -79,7 +79,11 @@ input:checked + .slider:before {
                         </td>
                         <td class="py-2 px-4 flex whitespace-nowrap">
                             <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
+                            <form action="{{ route('delete.users', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                            @csrf
+                            @method('DELETE')
                             <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
