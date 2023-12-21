@@ -97,7 +97,4 @@ class AdminController extends Controller
         toastr()->success('Password updated successfully!', 'Congrats');
         return redirect()->back();
     }
-    
-    
-    
 }
