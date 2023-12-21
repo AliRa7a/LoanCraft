@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\UsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
@@ -37,6 +38,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('/admin/update/profile',[AdminController::class, 'updateProfile'])->name('admin.profile.update');
     Route::get('/admin/update/password',[AdminController::class, 'updatePassword'])->name('admin.password.update');
     Route::post('/admin/store/password',[AdminController::class, 'storePassword'])->name('admin.password.store');
+
+    Route::get('/admin/all/users',[UsersController::class, 'allUsers'])->name('admin.all.users');
 });
 
 Route::middleware(['auth','role:user'])->group(function () {
@@ -46,5 +49,6 @@ Route::middleware(['auth','role:user'])->group(function () {
     Route::get('/user/update/password',[UserController::class, 'updatePassword'])->name('user.password.update');
     Route::post('/user/store/password',[UserController::class, 'storePassword'])->name('user.password.store');
 });
+
 
 require __DIR__.'/auth.php';
