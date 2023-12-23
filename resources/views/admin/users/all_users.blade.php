@@ -79,7 +79,7 @@
               </label>
             </td>
             <td class="py-2 px-4 flex whitespace-nowrap">
-              <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
+              <a href="{{route('user.deatail',$user->id)}}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
               <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2" onclick="showDeleteConfirmation('{{$user->id}}')">Delete</button>
               <form action="{{ route('delete.users', $user->id) }}" method="POST" id="delete-form{{$user->id}}">
                 @csrf
