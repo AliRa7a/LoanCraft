@@ -80,24 +80,15 @@
             </td>
             <td class="py-2 px-4 flex whitespace-nowrap">
               <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
-              <form action="{{ route('delete.users', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+              <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2" onclick="showDeleteConfirmation('{{$user->id}}')">Delete</button>
+              <form action="{{ route('delete.users', $user->id) }}" method="POST" id="delete-form{{$user->id}}">
                 @csrf
                 @method('DELETE')
-                <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2">Delete</button>
               </form>
             </td>
           </tr>
           @endforeach
         </tbody>
-        <div id="deleteConfirmation" class="hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 items-center justify-center">
-          <div class="bg-white p-8 rounded-md">
-            <p>Are you sure you want to delete this user?</p>
-            <div class="mt-4 flex justify-end">
-              <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200" onclick="deleteUser()">Yes, Delete it</button>
-              <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200 ml-2" onclick="hideDeleteConfirmation()">Cancel</button>
-            </div>
-          </div>
-        </div>
       </table>
     </div>
   </div>
