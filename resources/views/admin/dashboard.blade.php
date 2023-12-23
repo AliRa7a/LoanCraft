@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
 </head>
+
 <body>
     <div class="flex flex-col h-screen bg-gray-100">
         <!-- Header -->
@@ -30,7 +33,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-   
+
     <script>
         const profileButton = document.getElementById('profileButton');
         const profileDropdown = document.getElementById('profileDropdown');
@@ -47,24 +50,25 @@
     </script>
     <script>
         function previewImage() {
-        const fileInput = document.getElementById('profileImage');
-        const imagePreview = document.getElementById('selectedImage');
-        const profilePreview = document.getElementById('profilePreview');
+            const fileInput = document.getElementById('profileImage');
+            const imagePreview = document.getElementById('selectedImage');
+            const profilePreview = document.getElementById('profilePreview');
 
-        const file = fileInput.files[0];
+            const file = fileInput.files[0];
 
-        if (file) {
-            const reader = new FileReader();
+            if (file) {
+                const reader = new FileReader();
 
-            reader.onload = (e) => {
-            imagePreview.src = e.target.result;
-            profilePreview.src = e.target.result;
-            };
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    profilePreview.src = e.target.result;
+                };
 
-            reader.readAsDataURL(file);
-        }
+                reader.readAsDataURL(file);
+            }
         }
     </script>
-  
+
 </body>
+
 </html>
