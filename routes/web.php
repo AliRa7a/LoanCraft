@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/delete/{user}', [UsersController::class, 'deleteUser'])->name('delete.users');
     Route::get('/admin/user/detail/{id}', [UsersController::class, 'userDetail'])->name('user.deatail');
     Route::post('/admin/user/{id}/update-role', [UsersController::class, 'updateRole'])->name('user.update-role');
+    Route::post('/admin/user/{id}/update-status', [UsersController::class, 'updateStatus'])->name('user.update-status');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
