@@ -1,95 +1,105 @@
-@extends('admin.dashboard');
+@extends('admin.dashboard')
 
 @section('content')
 <style>
-    .switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-}
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
 
-.switch input {
-  display: none;
-}
+  .switch input {
+    display: none;
+  }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 17px; /* Make the slider rounded */
-  transition: 0.4s;
-}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 17px;
+    /* Make the slider rounded */
+    transition: 0.4s;
+  }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  border-radius: 50%; /* Make the circle rounded */
-  transition: 0.4s;
-}
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    /* Make the circle rounded */
+    transition: 0.4s;
+  }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
+  input:checked+.slider:before {
+    transform: translateX(26px);
+  }
 </style>
 
 
 <div class="p-6">
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <h2 class="text-2xl font-semibold mb-4">User Management</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full table-auto border">
-          <thead>
-            <tr class="bg-gray-200 whitespace-nowrap">
-              <th class="py-2 px-4">Sr. #</th>
-              <th class="py-2 px-4">Name</th>
-              <th class="py-2 px-4">Email</th>
-              <th class="py-2 px-4">Role</th>
-              <th class="py-2 px-4">Adminify</th>
-              <th class="py-2 px-4">Action</th>
-            </tr>
-          </thead>
+  <div class="bg-white shadow-md rounded-lg p-4">
+    <h2 class="text-2xl font-semibold mb-4">User Management</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full table-auto border">
+        <thead>
+          <tr class="bg-gray-200 whitespace-nowrap">
+            <th class="py-2 px-4">Sr. #</th>
+            <th class="py-2 px-4">Name</th>
+            <th class="py-2 px-4">Email</th>
+            <th class="py-2 px-4">Role</th>
+            <th class="py-2 px-4">Adminify</th>
+            <th class="py-2 px-4">Action</th>
+          </tr>
+        </thead>
 
-            <tbody id="user-table-body">
-            @foreach($users as $index => $user)
-                    <tr>
-                        <td class="py-2 px-4">{{ $index + 1 }}</td>
-                        <td class="py-2 px-4">{{ $user->name }}</td>
-                        <td class="py-2 px-4">{{ $user->email }}</td>
-                        <td class="py-2 px-4">{{ $user->role }}</td>
-                        <td class="py-2 px-4">
-                        <label class="switch">
-                            <input type="checkbox" {{ $user->role === 'admin' ? 'checked' : '' }}>
-                            <span class="slider"></span>
-                        </label>
-                        </td>
-                        <td class="py-2 px-4 flex whitespace-nowrap">
-                            <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
-                            <form action="{{ route('delete.users', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-      </div>
+        <tbody id="user-table-body">
+          @foreach($users as $index => $user)
+          <tr>
+            <td class="py-2 px-4">{{ $index + 1 }}</td>
+            <td class="py-2 px-4">{{ $user->name }}</td>
+            <td class="py-2 px-4">{{ $user->email }}</td>
+            <td class="py-2 px-4">{{ $user->role }}</td>
+            <td class="py-2 px-4">
+              <label class="switch">
+                <input type="checkbox" {{ $user->role === 'admin' ? 'checked' : '' }}>
+                <span class="slider"></span>
+              </label>
+            </td>
+            <td class="py-2 px-4 flex whitespace-nowrap">
+              <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</button>
+              <form action="{{ route('delete.users', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                @csrf
+                @method('DELETE')
+                <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2">Delete</button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+        <div id="deleteConfirmation" class="hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 items-center justify-center">
+          <div class="bg-white p-8 rounded-md">
+            <p>Are you sure you want to delete this user?</p>
+            <div class="mt-4 flex justify-end">
+              <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200" onclick="deleteUser()">Yes, Delete it</button>
+              <button class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200 ml-2" onclick="hideDeleteConfirmation()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </table>
     </div>
   </div>
-@endsection;
+</div>
+@endsection
