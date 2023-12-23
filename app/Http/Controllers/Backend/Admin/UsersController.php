@@ -24,10 +24,18 @@ class UsersController extends Controller
     }
     public function userDetail($id)
     {
-        // Retrieve user details using the $id parameter
+        $user = User::findOrFail($id);
+        return view('admin.users.detail', compact('user'));
+    }
+
+    public function updateRole(Request $request, $id)
+    {
         $user = User::findOrFail($id);
 
-        // Pass the user details to the view
-        return view('admin.users.detail', compact('user'));
+        $user->role = $request->has('role') ? 'admin' : 'user';
+        $user->save();
+
+        toastr()->success('Role updated successfully', 'Congrats');
+        return redirect()->back();
     }
 }
