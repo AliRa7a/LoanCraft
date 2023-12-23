@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\LoanTypesController;
 use App\Http\Controllers\Backend\Admin\UsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -42,8 +43,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/all/users', [UsersController::class, 'allUsers'])->name('admin.all.users');
     Route::delete('/admin/delete/{user}', [UsersController::class, 'deleteUser'])->name('delete.users');
     Route::get('/admin/user/detail/{id}', [UsersController::class, 'userDetail'])->name('user.deatail');
+
     Route::post('/admin/user/{id}/update-role', [UsersController::class, 'updateRole'])->name('user.update-role');
     Route::post('/admin/user/{id}/update-status', [UsersController::class, 'updateStatus'])->name('user.update-status');
+
+    Route::get('/admin/all/loan/types', [LoanTypesController::class, 'allLoanTypes'])->name('admin.all.loan.types');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
