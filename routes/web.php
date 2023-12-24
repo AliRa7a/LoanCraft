@@ -48,6 +48,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/user/{id}/update-status', [UsersController::class, 'updateStatus'])->name('user.update-status');
 
     Route::get('/admin/all/loan/types', [LoanTypesController::class, 'allLoanTypes'])->name('admin.all.loan.types');
+    Route::post('/admin/add/loan_type', [LoanTypesController::class, 'addLoanType'])->name('admin.add.loan.type');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
