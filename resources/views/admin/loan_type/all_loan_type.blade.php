@@ -18,7 +18,7 @@
         <table class="table-auto w-full">
             <thead>
                 <tr>
-                    <th class="px-4 py-2">Serial Number</th>
+                    <th class="px-4 py-2">Sr#</th>
                     <th class="px-4 py-2">Loan Type</th>
                     <th class="px-4 py-2">Actions</th>
                 </tr>
@@ -29,7 +29,7 @@
                     <td class="px-4 py-2">{{ $index + 1 }}</td>
                     <td class="px-4 py-2">{{ $loan->name }}</td>
                     <td class="px-4 py-2">
-                        <button class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 focus:ring-opacity-50">Update</button>
+                        <a href="{{route('edit.loan.type', $loan->id)}}" class="bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 focus:ring-opacity-50">Update</a>
                         <button type="submit" onclick="deleteLoanType('{{$loan->id}}')" class="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50">Delete</button>
                         <form action="{{ route('delete.loan.type', $loan->id) }}" method="POST" id="delete-loan{{$loan->id}}">
                             @csrf
