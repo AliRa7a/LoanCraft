@@ -10,7 +10,8 @@ class LoanTypesController extends Controller
 {
     public function allLoanTypes()
     {
-        return view('admin.loan_type.all_loan_type');
+        $loans = LoanTypes::orderBy('id')->get();
+        return view('admin.loan_type.all_loan_type', compact('loans'));
     }
 
     public function addLoanType(Request $request)
@@ -25,4 +26,13 @@ class LoanTypesController extends Controller
         toastr()->success('Loan type added successfully', 'Congrats');
         return redirect()->back();
     }
+
+    public function deleteLoanType(LoanTypes $loan_type)
+    {
+        $loan_type->delete();
+        toastr()->success('Loan type deleted successfully', 'Congrats');
+        return redirect()->back();
+    }
+
+    
 }
