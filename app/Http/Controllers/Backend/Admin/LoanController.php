@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
+use App\Models\LoanTypes;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
@@ -16,6 +17,7 @@ class LoanController extends Controller
 
     public function loanApplication()
     {
-        return view('user.loan.application');
+        $loan_types = LoanTypes::all();
+        return view('user.loan.application', compact('loan_types'));
     }
 }
