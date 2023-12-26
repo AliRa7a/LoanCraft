@@ -63,6 +63,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/user/update/profile', [UserController::class, 'updateProfile'])->name('user.profile.update');
     Route::get('/user/update/password', [UserController::class, 'updatePassword'])->name('user.password.update');
     Route::post('/user/store/password', [UserController::class, 'storePassword'])->name('user.password.store');
+
+    Route::get('/user/loan/application', [LoanController::class, 'loanApplication'])->name('user.loan.application');
 });
 
 
