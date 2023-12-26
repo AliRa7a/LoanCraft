@@ -13,4 +13,9 @@ class LoanController extends Controller
         $loan = LoanApplication::latest()->get();
         return view('admin.loan_application.all', compact('loan'));
     }
+
+    public function loanApplication()
+    {
+        return view('user.loan.application');
+    }
 }
