@@ -9,4 +9,9 @@ class LoanTypes extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function loan_application()
+    {
+        return $this->hasMany(LoanApplication::class);
+    }
 }
