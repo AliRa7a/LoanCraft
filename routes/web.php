@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\LoanController;
 use App\Http\Controllers\Backend\Admin\LoanTypesController;
 use App\Http\Controllers\Backend\Admin\UsersController;
 use App\Http\Controllers\ProfileController;
@@ -52,6 +53,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/delete/loan_type/{loan_type}', [LoanTypesController::class, 'deleteLoanType'])->name('delete.loan.type');
     Route::get('/admin/loan-types/{id}/edit', [LoanTypesController::class, 'editLoanType'])->name('edit.loan.type');
     Route::put('/admin/loan-types/{id}', [LoanTypesController::class, 'updateLoanType'])->name('update.loan.type');
+
+    Route::get('/admin/all/loan/applications', [LoanController::class, 'allLoanApplications'])->name('admin.all.loan.applications');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
