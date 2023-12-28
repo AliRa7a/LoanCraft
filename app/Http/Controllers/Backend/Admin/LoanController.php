@@ -49,4 +49,19 @@ class LoanController extends Controller
         toastr()->success('Loan applied successfully', 'Congrats');
         return redirect()->back();
     }
+    public function loanDetail($id)
+    {
+        $loan = LoanApplication::findOrFail($id);
+        return view('admin.loan_application.detail', compact('loan'));
+    }
+    public function updateStatus(Request $request, $id)
+    {
+        $loan = LoanApplication::find($id);
+
+        $loan->status = $request->has('status') ? 'approved' : 'not-approved';
+        $loan->save();
+
+        toastr()->success('Loan status updated successfully', 'Congrats');
+        return redirect()->back();
+    }
 }
