@@ -65,6 +65,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/user/store/password', [UserController::class, 'storePassword'])->name('user.password.store');
 
     Route::get('/user/loan/application', [LoanController::class, 'loanApplication'])->name('user.loan.application');
+    Route::post('/user/loan/store', [LoanController::class, 'loanStore'])->name('user.loan.store');
 });
 
 
