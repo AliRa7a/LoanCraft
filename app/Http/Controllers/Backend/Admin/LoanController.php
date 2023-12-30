@@ -24,6 +24,7 @@ class LoanController extends Controller
         $loan = DB::table('loan_applications')->where('status', 'approved')->get();
         return view('admin.loan_application.approved', compact('loan'));
     }
+
     public function loanApplication()
     {
         $loan_types = LoanTypes::all();
@@ -55,11 +56,13 @@ class LoanController extends Controller
         toastr()->success('Loan applied successfully', 'Congrats');
         return redirect()->back();
     }
+
     public function loanDetail($id)
     {
         $loan = LoanApplication::findOrFail($id);
         return view('admin.loan_application.detail', compact('loan'));
     }
+
     public function updateStatus(Request $request, $id)
     {
         $loan = LoanApplication::find($id);
@@ -69,5 +72,13 @@ class LoanController extends Controller
 
         toastr()->success('Loan status updated successfully', 'Congrats');
         return redirect()->back();
+    }
+
+    public function approvedLoan()
+    {
+        $email = auth()->user()->email;
+
+        $loan = DB::table('loan_applications')->where('email', $email)->where('status', 'approved')->get();
+        return view('user.loan.approved', compact('loan'));
     }
 }
