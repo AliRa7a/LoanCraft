@@ -9,12 +9,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class LoanController extends Controller
 {
     public function allLoanApplications()
     {
-        $loan = LoanApplication::latest()->get();
+        $loan = DB::table('loan_applications')->where('status', 'not_approved')->get();
         return view('admin.loan_application.all', compact('loan'));
     }
 
