@@ -62,11 +62,7 @@
                         <th class="py-2 px-4">Amount</th>
                         <th class="py-2 px-4">Bank</th>
                         <th class="py-2 px-4">AC Number</th>
-                        <th class="py-2 px-4">Approve Loan </th>
                         <th class="py-2 px-4">Action </th>
-
-
-
                     </tr>
                 </thead>
 
@@ -79,15 +75,6 @@
                         <td class="py-2 px-4">{{ $ln->amount }}</td>
                         <td class="py-2 px-4">{{ $ln->bank }}</td>
                         <td class="py-2 px-4">{{ $ln->account_number }}</td>
-                        <td class="py-2 px-4">
-                            <form action="{{ route('user.update-role',$ln->id) }}" method="post">
-                                @csrf
-                                <label class="switch">
-                                    <input type="checkbox" name="role" onchange="this.form.submit()" {{ $ln->status === 'admin' ? 'checked' : '' }}>
-                                    <span class="slider"></span>
-                                </label>
-                            </form>
-                        </td>
                         <td class="py-2 px-4 flex whitespace-nowrap">
                             <a href="{{route('loan.deatail',$ln->id)}}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
                         </td>
