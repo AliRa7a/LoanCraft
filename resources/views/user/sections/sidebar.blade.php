@@ -19,7 +19,7 @@
                 </button>
                 <ul x-show="open" class="ml-4 mt-2 space-y-2">
                     <li><a href="{{route('user.loan.application')}}" class="text-gray-300 hover:text-white">Apply for loan</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white">Add Product</a></li>
+                    <li><a href="{{route('user.approved.loan')}}" class="text-gray-300 hover:text-white">View Approved Loans</a></li>
                 </ul>
             </div>
         </li>
