@@ -19,6 +19,11 @@ class LoanController extends Controller
         return view('admin.loan_application.all', compact('loan'));
     }
 
+    public function ApprovedLoanApplications()
+    {
+        $loan = DB::table('loan_applications')->where('status', 'approved')->get();
+        return view('admin.loan_application.approved', compact('loan'));
+    }
     public function loanApplication()
     {
         $loan_types = LoanTypes::all();
