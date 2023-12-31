@@ -2,6 +2,7 @@
 
 @section('content')
 <style>
+    /* Switch Style */
     .switch {
         position: relative;
         display: inline-block;
@@ -47,8 +48,10 @@
         transform: translateX(26px);
     }
 </style>
+
 <div class="p-6 mx-auto max-w-xl">
     <div class="bg-white shadow-md rounded-lg p-4">
+        <!-- User Profile Section -->
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <img src="{{ asset($user->image) }}" alt="{{ $user->name }}'s Profile Image" class="w-16 h-16 rounded-full">
@@ -57,6 +60,8 @@
                     <p class="text-gray-500">{{ $user->role }}</p>
                 </div>
             </div>
+
+            <!-- Change Status Section -->
             <div>
                 <b>Change Status</b>
                 <form action="{{ route('user.update-status',$user->id) }}" method="post">
@@ -68,7 +73,11 @@
                 </form>
             </div>
         </div>
+
+        <!-- Separator Line -->
         <hr class="my-4 border-t border-gray-300">
+
+        <!-- User Details Section -->
         <div>
             <h3 class="text-xl font-semibold mb-2">User Details</h3>
             <p class="font-semibold mb-2">Email: {{ $user->email }}</p>
