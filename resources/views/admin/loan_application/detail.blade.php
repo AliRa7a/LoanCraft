@@ -2,6 +2,7 @@
 
 @section('content')
 <style>
+    /* Custom styles for the toggle switch */
     .switch {
         position: relative;
         display: inline-block;
@@ -58,7 +59,7 @@
             </div>
             <div>
                 <b>Change Status</b>
-                <form action="{{ route('loan.update-status',$loan->id) }}" method="post">
+                <form action="{{ route('loan.update-status', $loan->id) }}" method="post">
                     @csrf
                     <label class="switch">
                         <input type="checkbox" name="status" onchange="this.form.submit()" {{ $loan->status === 'approved' ? 'checked' : '' }}>
@@ -75,8 +76,7 @@
             <p class="font-semibold mb-2">Account No: {{ $loan->account_number }}</p>
             <p class="font-semibold mb-2"> Installment: {{ $loan->installment_amount }}</p>
             <p class="font-semibold mb-2">Amount + Interest: {{ $loan->amount_payable }}</p>
-            <p class="font-semibold mb-2">Staus: {{ $loan->status }}</p>
-
+            <p class="font-semibold mb-2">Status: {{ $loan->status }}</p>
         </div>
     </div>
 </div>
