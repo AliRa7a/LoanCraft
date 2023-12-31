@@ -65,6 +65,8 @@ class AdminController extends Controller
         // Update user profile information
         $user->name = $request->name;
         $user->phone = $request->phone;
+
+        /** @var \App\Models\User $user **/
         $user->save();
 
         toastr()->success('Profile has been updated successfully!', 'Congrats');
