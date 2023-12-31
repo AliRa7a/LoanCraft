@@ -53,11 +53,13 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <div>
+                    <!-- User details -->
                     <h2 class="text-2xl font-semibold">{{ $loan->name }}</h2>
                     <p class="text-gray-500">{{ $loan->email }}</p>
                 </div>
             </div>
             <div>
+                <!-- Toggle switch for changing status -->
                 <b>Change Status</b>
                 <form action="{{ route('loan.update-status', $loan->id) }}" method="post">
                     @csrf
@@ -71,6 +73,7 @@
         <hr class="my-4 border-t border-gray-300">
         <div>
             <h3 class="text-xl font-semibold mb-2">Loan Application Details</h3>
+            <!-- Display loan application details -->
             <p class="font-semibold mb-2">Amount: {{ $loan->amount }}</p>
             <p class="font-semibold mb-2">Bank: {{ $loan->bank }}</p>
             <p class="font-semibold mb-2">Account No: {{ $loan->account_number }}</p>
