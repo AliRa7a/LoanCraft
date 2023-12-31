@@ -67,6 +67,7 @@
                 </thead>
 
                 <tbody id="user-table-body">
+                    <!-- Loop through each loan application -->
                     @foreach($loan as $index => $ln)
                     <tr>
                         <td class="py-2 px-4">{{ $index + 1 }}</td>
@@ -76,6 +77,7 @@
                         <td class="py-2 px-4">{{ $ln->bank }}</td>
                         <td class="py-2 px-4">{{ $ln->account_number }}</td>
                         <td class="py-2 px-4 flex whitespace-nowrap">
+                            <!-- Link to view loan details -->
                             <a href="{{ route('loan.deatail', $ln->id) }}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
                         </td>
                     </tr>
