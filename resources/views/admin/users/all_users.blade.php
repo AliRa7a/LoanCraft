@@ -2,6 +2,7 @@
 
 @section('content')
 <style>
+  /* Switch Style */
   .switch {
     position: relative;
     display: inline-block;
@@ -48,10 +49,12 @@
   }
 </style>
 
-
 <div class="p-6">
   <div class="bg-white shadow-md rounded-lg p-4">
+    <!-- Title -->
     <h2 class="text-2xl font-semibold mb-4">User Management</h2>
+
+    <!-- Table -->
     <div class="overflow-x-auto">
       <table class="min-w-full table-auto border">
         <thead>
@@ -73,6 +76,7 @@
             <td class="py-2 px-4">{{ $user->email }}</td>
             <td class="py-2 px-4">{{ $user->role }}</td>
             <td class="py-2 px-4">
+              <!-- Switch for Role -->
               <form action="{{ route('user.update-role',$user->id) }}" method="post">
                 @csrf
                 <label class="switch">
@@ -82,8 +86,11 @@
               </form>
             </td>
             <td class="py-2 px-4 flex whitespace-nowrap">
+              <!-- View Details Button -->
               <a href="{{route('user.deatail',$user->id)}}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
+              <!-- Delete Button -->
               <button class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2" onclick="showDeleteConfirmation('{{$user->id}}')">Delete</button>
+              <!-- Delete Form -->
               <form action="{{ route('delete.users', $user->id) }}" method="POST" id="delete-form{{$user->id}}">
                 @csrf
                 @method('DELETE')
