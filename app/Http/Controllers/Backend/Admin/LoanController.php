@@ -13,32 +13,55 @@ use Illuminate\Support\Facades\DB;
 
 class LoanController extends Controller
 {
+    /**
+     * Display all loan applications awaiting approval.
+     *
+     * @return \Illuminate\View\View
+     */
     public function allLoanApplications()
     {
         $loan = DB::table('loan_applications')->where('status', 'not_approved')->get();
         return view('admin.loan_application.all', compact('loan'));
     }
 
+    /**
+     * Display all approved loan applications.
+     *
+     * @return \Illuminate\View\View
+     */
     public function ApprovedLoanApplications()
     {
         $loan = DB::table('loan_applications')->where('status', 'approved')->get();
         return view('admin.loan_application.approved', compact('loan'));
     }
 
+    /**
+     * Display the loan application form for users.
+     *
+     * @return \Illuminate\View\View
+     */
     public function loanApplication()
     {
         $loan_types = LoanTypes::all();
         return view('user.loan.application', compact('loan_types'));
     }
 
+    /**
+     * Store a new loan application.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function loanStore(Request $request)
     {
         $id = Auth::user()->id;
         $data = User::find($id);
 
+        // Get the current date
         $today = Carbon::now();
         $formattedDate = $today->format('Y-m-d');
 
+        // Insert new loan application record
         LoanApplication::insert([
             'name' => $data->name,
             'email' => $data->email,
@@ -51,22 +74,36 @@ class LoanController extends Controller
             'amount_payable' => $request->amount_payable,
             'date_applied' => $formattedDate,
             'status' => 'not_approved',
-
         ]);
+
         toastr()->success('Loan applied successfully', 'Congrats');
         return redirect()->back();
     }
 
+    /**
+     * Display details of a specific loan application.
+     *
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function loanDetail($id)
     {
         $loan = LoanApplication::findOrFail($id);
         return view('admin.loan_application.detail', compact('loan'));
     }
 
+    /**
+     * Update the status of a loan application.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateStatus(Request $request, $id)
     {
         $loan = LoanApplication::find($id);
 
+        // Update the loan status based on user input
         $loan->status = $request->has('status') ? 'approved' : 'not-approved';
         $loan->save();
 
@@ -74,10 +111,16 @@ class LoanController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Display all approved loans for the authenticated user.
+     *
+     * @return \Illuminate\View\View
+     */
     public function approvedLoan()
     {
         $email = auth()->user()->email;
 
+        // Retrieve approved loans for the authenticated user
         $loan = DB::table('loan_applications')->where('email', $email)->where('status', 'approved')->get();
         return view('user.loan.approved', compact('loan'));
     }
