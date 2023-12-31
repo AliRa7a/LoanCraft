@@ -2,6 +2,7 @@
 
 @section('content')
 <style>
+    /* Custom styles for the toggle switch */
     .switch {
         position: relative;
         display: inline-block;
@@ -48,7 +49,6 @@
     }
 </style>
 
-
 <div class="p-6">
     <div class="bg-white shadow-md rounded-lg p-4">
         <h2 class="text-2xl font-semibold mb-4">Approved Loan Application Management</h2>
@@ -62,7 +62,7 @@
                         <th class="py-2 px-4">Amount</th>
                         <th class="py-2 px-4">Bank</th>
                         <th class="py-2 px-4">AC Number</th>
-                        <th class="py-2 px-4">Action </th>
+                        <th class="py-2 px-4">Action</th>
                     </tr>
                 </thead>
 
@@ -76,7 +76,7 @@
                         <td class="py-2 px-4">{{ $ln->bank }}</td>
                         <td class="py-2 px-4">{{ $ln->account_number }}</td>
                         <td class="py-2 px-4 flex whitespace-nowrap">
-                            <a href="{{route('loan.deatail',$ln->id)}}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
+                            <a href="{{ route('loan.deatail', $ln->id) }}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
                         </td>
                     </tr>
                     @endforeach
