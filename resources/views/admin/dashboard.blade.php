@@ -2,25 +2,29 @@
 <html lang="en">
 
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+
+    <!-- External Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Main Container -->
     <div class="flex flex-col h-screen bg-gray-100">
-        <!-- Header -->
+        <!-- Header Section -->
         @include('admin.sections.header')
 
-        <!-- Main Content -->
+        <!-- Main Content Section -->
         <div class="flex-1">
             <div class="flex h-full">
-                <!-- Sidebar -->
+                <!-- Sidebar Section -->
                 @include('admin.sections.sidebar')
 
-                <!-- Page content -->
+                <!-- Page content Section -->
                 <div class="flex-1 p-10">
                     <!-- Page content goes here -->
                     @yield('content')
@@ -28,12 +32,15 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Footer Section -->
         @include('admin.sections.footer')
     </div>
 
+    <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Custom Scripts -->
     <script>
         const profileButton = document.getElementById('profileButton');
         const profileDropdown = document.getElementById('profileDropdown');
@@ -112,7 +119,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>
