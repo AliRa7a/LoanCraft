@@ -1,3 +1,4 @@
+<!-- User Approved Loan Application Management -->
 @extends('user.dashboard');
 
 @section('content')
@@ -47,7 +48,6 @@
         transform: translateX(26px);
     }
 </style>
-
 
 <div class="p-6">
     <div class="bg-white shadow-md rounded-lg p-4">
