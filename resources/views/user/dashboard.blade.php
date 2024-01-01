@@ -1,3 +1,4 @@
+<!-- User Dashboard -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,17 +10,18 @@
 </head>
 
 <body>
+    <!-- Main Container -->
     <div class="flex flex-col h-screen bg-gray-100">
-        <!-- Header -->
+        <!-- Header Section -->
         @include('user.sections.header')
 
-        <!-- Main Content -->
+        <!-- Main Content Section -->
         <div class="flex-1">
             <div class="flex h-full">
-                <!-- Sidebar -->
+                <!-- Sidebar Section -->
                 @include('user.sections.sidebar')
 
-                <!-- Page content -->
+                <!-- Page content Section -->
                 <div class="flex-1 p-10">
                     <!-- Page content goes here -->
                     @yield('content')
@@ -27,12 +29,14 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Footer Section -->
         @include('user.sections.footer')
     </div>
 
+    <!-- JavaScript Imports -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
+    <!-- JavaScript for Profile Dropdown -->
     <script>
         const profileButton = document.getElementById('profileButton');
         const profileDropdown = document.getElementById('profileDropdown');
@@ -47,6 +51,8 @@
             }
         });
     </script>
+
+    <!-- JavaScript for Image Preview -->
     <script>
         function previewImage() {
             const fileInput = document.getElementById('profileImage');
@@ -67,6 +73,8 @@
             }
         }
     </script>
+
+    <!-- JavaScript for Installment Calculation -->
     <script>
         function calculateInstallment() {
             const amountInput = document.getElementById('amount');
