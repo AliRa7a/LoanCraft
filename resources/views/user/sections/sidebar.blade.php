@@ -24,6 +24,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
                     </svg>
                 </button>
+                
                 <!-- Loan Details Dropdown Items -->
                 <ul x-show="open" class="ml-4 mt-2 space-y-2">
                     <li><a href="{{route('user.loan.application')}}" class="text-gray-300 hover:text-white">Apply for loan</a></li>
