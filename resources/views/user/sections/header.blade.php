@@ -9,6 +9,7 @@
                 <h2 class="text-xl font-semibold text-white">Loan Craft</h2>
             </div>
         </div>
+        
         <!-- User Profile and Navigation -->
         <div class="relative inline-block text-gray-200">
             <!-- Profile Button -->
@@ -19,6 +20,7 @@
                     <p class="text-gray-200 text-sm cursor-pointer">{{Auth::user()->role}}</p>
                 </div>
             </div>
+
             <!-- Profile Dropdown Menu -->
             <ul id="profileDropdown" class="hidden mt-2 py-2 w-32 bg-white border rounded-lg shadow-lg absolute right-0" x-cloak>
                 <li><a href="{{route('user.profile')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">My Profile</a></li>
