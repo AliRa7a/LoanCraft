@@ -96,6 +96,7 @@
                 amountPlusTenPercentInput.value = '';
             }
         }
+        
     </script>
 
 </body>
